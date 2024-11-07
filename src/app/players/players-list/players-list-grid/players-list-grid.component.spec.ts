@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
+import { PlayersListGridComponent } from './players-list-grid.component';
 
-describe('AppComponent', () => {
-  let component: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+describe('PlayersListGridComponent', () => {
+  let component: PlayersListGridComponent;
+  let fixture: ComponentFixture<PlayersListGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent]
+      imports: [PlayersListGridComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(PlayersListGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
