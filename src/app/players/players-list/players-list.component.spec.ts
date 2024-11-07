@@ -42,10 +42,11 @@ describe('PlayersListComponent', () => {
         },
         players: [],
       };
-      playersServiceSpy.getAllPlayers.and.returnValue(of(stubPlayers));
-      setTimeout(() => {});
+
+      component.playersData$ = of(stubPlayers);
+
       fixture.detectChanges();
-      console.log(fixture.nativeElement);
+
       const gridComponent = fixture.nativeElement.querySelector(
         'app-players-list-grid'
       );
