@@ -13,6 +13,7 @@ import { ButtonCellRendererComponent } from '../../../shared/cell-renderers/butt
 })
 export class PlayersListGridComponent {
   @Input() players: Player[] = [];
+  @Input() selectedPlayers: any;
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
     { field: 'name' },

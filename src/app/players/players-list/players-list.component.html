@@ -1,2 +1,2 @@
 @if(playersData$ | async; as playersData) {
-<app-players-list-grid [players]="playersData.players" />}
+<app-players-list-grid [players]="playersData.players" [selectedPlayers]="selectedPlayers$" />}
