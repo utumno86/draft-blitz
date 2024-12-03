@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { RosterService } from '../../roster.service';
 import { Player } from '../../players.response';
+
+export interface ButtonCellRendererParams extends ICellRendererParams<Player> {
+  buttonClicked: (value: unknown) => void;
+}
 
 @Component({
   selector: 'app-button-cell-renderer',
@@ -11,12 +16,13 @@ import { Player } from '../../players.response';
   styleUrl: './button-cell-renderer.component.scss',
 })
 export class ButtonCellRendererComponent implements ICellRendererAngularComp {
-  agInit(params: ICellRendererParams<Player>): void {}
-  refresh(params: ICellRendererParams<Player>) {
-    params.data?.position;
-    return true;
+  rosterService = inject(RosterService);
+  params!: ButtonCellRendererParams;
+  agInit(params: ButtonCellRendererParams): void {
+    this.params = params;
   }
-  buttonClicked() {
-    alert('Button was clicked!');
+  refresh(params: ButtonCellRendererParams) {
+    this.params = params;
+    return true;
   }
 }

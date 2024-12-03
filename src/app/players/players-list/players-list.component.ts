@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayersService } from '../../shared/players.service';
 import { PlayersListGridComponent } from './players-list-grid/players-list-grid.component';
@@ -14,6 +14,4 @@ export class PlayersListComponent {
   playersService = inject(PlayersService);
 
   playersData$ = this.playersService.getAllPlayers();
-
-  selectedPlayers$ = signal([]);
 }

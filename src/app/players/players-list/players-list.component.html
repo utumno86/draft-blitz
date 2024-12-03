@@ -1,5 +1,3 @@
 @if(playersData$ | async; as playersData) {
-  @if(selectedPlayers$ | async; as selectedPlayers) {
-    <app-players-list-grid [players]="playersData.players" [selectedPlayers]="selectedPlayers" />
-  }
+    <app-players-list-grid [players]="playersData.players" />
 }

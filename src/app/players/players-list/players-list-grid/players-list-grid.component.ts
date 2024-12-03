@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
 import { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
 import { Player } from '../../../shared/players.response';
 import { ButtonCellRendererComponent } from '../../../shared/cell-renderers/button-cell-renderer/button-cell-renderer.component';
+import { RosterService } from '../../../shared/roster.service';
 
 @Component({
   selector: 'app-players-list-grid',
@@ -13,7 +14,8 @@ import { ButtonCellRendererComponent } from '../../../shared/cell-renderers/butt
 })
 export class PlayersListGridComponent {
   @Input() players: Player[] = [];
-  @Input() selectedPlayers: any;
+
+  rosterService = inject(RosterService);
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
@@ -27,7 +29,15 @@ export class PlayersListGridComponent {
     { field: 'low' },
     { field: 'stdev' },
     { field: 'bye' },
-    { field: 'button', cellRenderer: ButtonCellRendererComponent },
+    {
+      field: 'button',
+      cellRenderer: ButtonCellRendererComponent,
+      cellRendererParams: {
+        buttonClicked: (params: Player) => {
+          this.handleRowAction(params);
+        },
+      },
+    },
   ];
 
   defaultColDef: ColDef = {
@@ -35,7 +45,10 @@ export class PlayersListGridComponent {
     floatingFilter: true,
   };
 
-  cellRendererParams = {
-    selectedPlayers: this.selectedPlayers,
-  };
+  handleRowAction(params: Player) {
+    if (params) {
+      this.rosterService.addPlayer(params);
+    }
+    console.log(this.rosterService.selectedPlayers());
+  }
 }
