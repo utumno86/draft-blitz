@@ -17,6 +17,6 @@ export class ButtonCellRendererComponent implements ICellRendererAngularComp {
     return true;
   }
   buttonClicked() {
-    alert('Drafted!');
+    alert('Button was clicked!');
   }
 }
