@@ -16,7 +16,6 @@ export interface ButtonCellRendererParams extends ICellRendererParams<Player> {
   styleUrl: './button-cell-renderer.component.scss',
 })
 export class ButtonCellRendererComponent implements ICellRendererAngularComp {
-  rosterService = inject(RosterService);
   params!: ButtonCellRendererParams;
   agInit(params: ButtonCellRendererParams): void {
     this.params = params;

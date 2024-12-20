@@ -1,1 +1,13 @@
-<p>selected-players works!</p>
+<sl-drawer label="Drawer" placement="start" class="drawer-placement-start" [open]="showDrawer" (sl-request-close)="closeSelectedPlayers($event)">
+  <ul>
+    @for(player of selectedPlayers(); track player.player_id) {
+      <li>
+        <ul>
+          <li>{{ player.name }}</li>
+          <li>{{ player.position }}</li>
+        </ul>
+      </li>
+    }
+  </ul>
+  <sl-button slot="footer" variant="primary" (click)="closeSelectedPlayers($event)">Close</sl-button>
+</sl-drawer>

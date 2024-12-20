@@ -1,1 +1,5 @@
 <app-players-list />
+<h1>
+  <sl-button (click)="showSelectedPlayersList()">Open Drawer</sl-button>
+</h1>
+<app-selected-players [showDrawer]="showDrawer()" (closeSelectedPlayersEvent)="closeSelectedPlayersList()"/>
